@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Network Intrusion Detection Engine</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  </head>
+  <style>
+    table,
+    tr,
+    th,
+    td {
+      border: 1px solid black;
+      width: 80%;
+    }
+    .center {
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .center_div {
+      margin: auto;
+      width: 60%;
+      /* border: 3px solid #73ad21; */
+      padding: 10px;
+    }
+  </style>
+  <script type="text/javascript"></script>
+  <body style="background-color: powderblue">
+    <h1
+      style="
+        text-align: center;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS',
+          sans-serif;
+      "
+    >
+      Network Intrusion Detection Engine
+    </h1>
+    <div class="center">
+      <table class="center">
+        <tr>
+          <td rowspan="44">
+            <img
+              src="static/plot_feature.jpg"
+              id="imageid"
+              alt="Image Features"
+            />
+          </td>
+        </tr>
+        <tr>
+          <td rowspan="44">
+            <label for="res">Decision: </label>
+            <input type="text" id="res" name="res" />
+          </td>
+        </tr>
+        <tr>
+          <td><label for="para_0">dur______________: </label></td>
+          <td><input type="text" id="para_0" name="para_0" /><br /></td>
+        </tr>
+        <tr>
+          <td><label for="para_1">proto____________: </label></td>
+          <td><input type="text" id="para_1" name="para_1" /><br /></td>
+        </tr>
+        <tr>
+          <td><label for="para_2">service__________: </label></td>
+          <td><input type="text" id="para_2" name="para_2" /><br /></td>
+        </tr>
+        <tr>
+          <td><label for="para_3">state____________: </label></td>
+          <td><input type="text" id="para_3" name="para_3" /><br /></td>
+        </tr>
+        <tr>
+          <td><label for="para_4">spkts____________: </label></td>
+          <td><input type="text" id="para_4" name="para_4" /><br /></td>
+        </tr>
+        <tr>
+          <td><label for="para_5">dpkts____________: </label></td>
+          <td><input type="text" id="para_5" name="para_5" /><br /></td>
+        </tr>
+        <tr>
+          <td><label for="para_6">sbytes___________: </label></td>
+          <td><input type="text" id="para_6" name="para_6" /><br /></td>
+        </tr>
+        <tr>
+          <td><label for="para_7">dbytes___________: </label></td>
+          <td><input type="text" id="para_7" name="para_7" /><br /></td>
+        </tr>
+        <tr>
+          <td><label for="para_8">rate_____________: </label></td>
+          <td><input type="text" id="para_8" name="para_8" /><br /></td>
+        </tr>
+        <tr>
+          <td><label for="para_9">sttl_____________: </label></td>
+          <td><input type="text" id="para_9" name="para_9" /><br /></td>
+        </tr>
+        <tr>
+          <td><label for="para_10">dttl_____________: </label></td>
+          <td><input type="text" id="para_10" name="para_10" /><br /></td>
+        </tr>
+        <tr>
+          <td><label for="para_11">sload____________: </label></td>
+          <td><input type="text" id="para_11" name="para_11" /><br /></td>
+        </tr>
+        <tr>
+          <td><label for="para_12">dload____________: </label></td>
+          <td><input type="text" id="para_12" name="para_12" /><br /></td>
+        </tr>
+        <tr>
+          <td><label for="para_13">sloss____________: </label></td>
+          <td><input type="text" id="para_13" name="para_13" /><br /></td>
+        </tr>
+        <tr>
+          <td><label for="para_14">dloss____________: </label></td>
+          <td><input type="text" id="para_14" name="para_14" /><br /></td>
+        </tr>
+        <tr>
+          <td><label for="para_15">sinpkt___________: </label></td>
+          <td><input type="text" id="para_15" name="para_15" /><br /></td>
+        </tr>
+        <tr>
+          <td><label for="para_16">dinpkt___________: </label></td>
+          <td><input type="text" id="para_16" name="para_16" /><br /></td>
+        </tr>
+        <tr>
+          <td><label for="para_17">sjit_____________: </label></td>
+          <td><input type="text" id="para_17" name="para_17" /><br /></td>
+        </tr>
+        <tr>
+          <td><label for="para_18">djit_____________: </label></td>
+          <td><input type="text" id="para_18" name="para_18" /><br /></td>
+        </tr>
+        <tr>
+          <td><label for="para_19">swin_____________: </label></td>
+          <td><input type="text" id="para_19" name="para_19" /><br /></td>
+        </tr>
+        <tr>
+          <td><label for="para_20">stcpb____________: </label></td>
+          <td><input type="text" id="para_20" name="para_20" /><br /></td>
+        </tr>
+        <tr>
+          <td><label for="para_21">dtcpb____________: </label></td>
+          <td><input type="text" id="para_21" name="para_21" /><br /></td>
+        </tr>
+        <tr>
+          <td><label for="para_22">dwin_____________: </label></td>
+          <td><input type="text" id="para_22" name="para_22" /><br /></td>
+        </tr>
+        <tr>
+          <td><label for="para_23">tcprtt___________: </label></td>
+          <td><input type="text" id="para_23" name="para_23" /><br /></td>
+        </tr>
+        <tr>
+          <td><label for="para_24">synack___________: </label></td>
+          <td><input type="text" id="para_24" name="para_24" /><br /></td>
+        </tr>
+        <tr>
+          <td><label for="para_25">ackdat___________: </label></td>
+          <td><input type="text" id="para_25" name="para_25" /><br /></td>
+        </tr>
+        <tr>
+          <td><label for="para_26">smean____________: </label></td>
+          <td><input type="text" id="para_26" name="para_26" /><br /></td>
+        </tr>
+        <tr>
+          <td><label for="para_27">dmean____________: </label></td>
+          <td><input type="text" id="para_27" name="para_27" /><br /></td>
+        </tr>
+        <tr>
+          <td><label for="para_28">trans_depth______: </label></td>
+          <td><input type="text" id="para_28" name="para_28" /><br /></td>
+        </tr>
+        <tr>
+          <td><label for="para_29">response_body_len: </label></td>
+          <td><input type="text" id="para_29" name="para_29" /><br /></td>
+        </tr>
+        <tr>
+          <td><label for="para_30">ct_srv_src_______: </label></td>
+          <td><input type="text" id="para_30" name="para_30" /><br /></td>
+        </tr>
+        <tr>
+          <td><label for="para_31">ct_state_ttl_____: </label></td>
+          <td><input type="text" id="para_31" name="para_31" /><br /></td>
+        </tr>
+        <tr>
+          <td><label for="para_32">ct_dst_ltm_______: </label></td>
+          <td><input type="text" id="para_32" name="para_32" /><br /></td>
+        </tr>
+        <tr>
+          <td><label for="para_33">ct_src_dport_ltm_: </label></td>
+          <td><input type="text" id="para_33" name="para_33" /><br /></td>
+        </tr>
+        <tr>
+          <td><label for="para_34">ct_dst_sport_ltm_: </label></td>
+          <td><input type="text" id="para_34" name="para_34" /><br /></td>
+        </tr>
+        <tr>
+          <td><label for="para_35">ct_dst_src_ltm___: </label></td>
+          <td><input type="text" id="para_35" name="para_35" /><br /></td>
+        </tr>
+        <tr>
+          <td><label for="para_36">is_ftp_login_____: </label></td>
+          <td><input type="text" id="para_36" name="para_36" /><br /></td>
+        </tr>
+        <tr>
+          <td><label for="para_37">ct_ftp_cmd_______: </label></td>
+          <td><input type="text" id="para_37" name="para_37" /><br /></td>
+        </tr>
+        <tr>
+          <td><label for="para_38">ct_flw_http_mthd_: </label></td>
+          <td><input type="text" id="para_38" name="para_38" /><br /></td>
+        </tr>
+        <tr>
+          <td><label for="para_39">ct_src_ltm_______: </label></td>
+          <td><input type="text" id="para_39" name="para_39" /><br /></td>
+        </tr>
+        <tr>
+          <td><label for="para_40">ct_srv_dst_______: </label></td>
+          <td><input type="text" id="para_40" name="para_40" /><br /></td>
+        </tr>
+        <tr>
+          <td><label for="para_41">is_sm_ips_ports__: </label></td>
+          <td><input type="text" id="para_41" name="para_41" /><br /></td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- <input type="button" value="Click me" onclick="req_data()" /> -->
+
+    <script type="text/javascript">
+      function req_data() {
+        document.getElementById("para_0").value = Math.random();
+        document.getElementById("para_1").value = Math.random();
+        document.getElementById("para_2").value = Math.random();
+        document.getElementById("para_3").value = Math.random();
+        document.getElementById("para_4").value = Math.random();
+        document.getElementById("para_5").value = Math.random();
+        document.getElementById("para_6").value = Math.random();
+        document.getElementById("para_7").value = Math.random();
+        document.getElementById("para_8").value = Math.random();
+        document.getElementById("para_9").value = Math.random();
+        document.getElementById("para_10").value = Math.random();
+        document.getElementById("para_11").value = Math.random();
+        document.getElementById("para_12").value = Math.random();
+        document.getElementById("para_13").value = Math.random();
+        document.getElementById("para_14").value = Math.random();
+        document.getElementById("para_15").value = Math.random();
+        document.getElementById("para_16").value = Math.random();
+        document.getElementById("para_17").value = Math.random();
+        document.getElementById("para_18").value = Math.random();
+        document.getElementById("para_19").value = Math.random();
+        document.getElementById("para_20").value = Math.random();
+        document.getElementById("para_21").value = Math.random();
+        document.getElementById("para_22").value = Math.random();
+        document.getElementById("para_23").value = Math.random();
+        document.getElementById("para_24").value = Math.random();
+        document.getElementById("para_25").value = Math.random();
+        document.getElementById("para_26").value = Math.random();
+        document.getElementById("para_27").value = Math.random();
+        document.getElementById("para_28").value = Math.random();
+        document.getElementById("para_29").value = Math.random();
+        document.getElementById("para_30").value = Math.random();
+        document.getElementById("para_31").value = Math.random();
+        document.getElementById("para_32").value = Math.random();
+        document.getElementById("para_33").value = Math.random();
+        document.getElementById("para_34").value = Math.random();
+        document.getElementById("para_35").value = Math.random();
+        document.getElementById("para_36").value = Math.random();
+        document.getElementById("para_37").value = Math.random();
+        document.getElementById("para_38").value = Math.random();
+        document.getElementById("para_39").value = Math.random();
+        document.getElementById("para_40").value = Math.random();
+        document.getElementById("para_41").value = Math.random();
+
+        para_0 = document.getElementById("para_0").value;
+        para_1 = document.getElementById("para_1").value;
+        para_2 = document.getElementById("para_2").value;
+        para_3 = document.getElementById("para_3").value;
+        para_4 = document.getElementById("para_4").value;
+        para_5 = document.getElementById("para_5").value;
+        para_6 = document.getElementById("para_6").value;
+        para_7 = document.getElementById("para_7").value;
+        para_8 = document.getElementById("para_8").value;
+        para_9 = document.getElementById("para_9").value;
+        para_10 = document.getElementById("para_10").value;
+        para_11 = document.getElementById("para_11").value;
+        para_12 = document.getElementById("para_12").value;
+        para_13 = document.getElementById("para_13").value;
+        para_14 = document.getElementById("para_14").value;
+        para_15 = document.getElementById("para_15").value;
+        para_16 = document.getElementById("para_16").value;
+        para_17 = document.getElementById("para_17").value;
+        para_18 = document.getElementById("para_18").value;
+        para_19 = document.getElementById("para_19").value;
+        para_20 = document.getElementById("para_20").value;
+        para_21 = document.getElementById("para_21").value;
+        para_22 = document.getElementById("para_22").value;
+        para_23 = document.getElementById("para_23").value;
+        para_24 = document.getElementById("para_24").value;
+        para_25 = document.getElementById("para_25").value;
+        para_26 = document.getElementById("para_26").value;
+        para_27 = document.getElementById("para_27").value;
+        para_28 = document.getElementById("para_28").value;
+        para_29 = document.getElementById("para_29").value;
+        para_30 = document.getElementById("para_30").value;
+        para_31 = document.getElementById("para_31").value;
+        para_32 = document.getElementById("para_32").value;
+        para_33 = document.getElementById("para_33").value;
+        para_34 = document.getElementById("para_34").value;
+        para_35 = document.getElementById("para_35").value;
+        para_36 = document.getElementById("para_36").value;
+        para_37 = document.getElementById("para_37").value;
+        para_38 = document.getElementById("para_38").value;
+        para_39 = document.getElementById("para_39").value;
+        para_40 = document.getElementById("para_40").value;
+        para_41 = document.getElementById("para_41").value;
+        $.ajax({
+          url: "/test",
+          type: "POST",
+          data: {
+            new_freq: para_0.concat(
+              " ",
+              para_1,
+              " ",
+              para_2,
+              " ",
+              para_3,
+              " ",
+              para_4,
+              " ",
+              para_5,
+              " ",
+              para_6,
+              " ",
+              para_7,
+              " ",
+              para_8,
+              " ",
+              para_9,
+              " ",
+              para_10,
+              " ",
+              para_11,
+              " ",
+              para_12,
+              " ",
+              para_13,
+              " ",
+              para_14,
+              " ",
+              para_15,
+              " ",
+              para_16,
+              " ",
+              para_17,
+              " ",
+              para_18,
+              " ",
+              para_19,
+              " ",
+              para_20,
+              " ",
+              para_21,
+              " ",
+              para_22,
+              " ",
+              para_23,
+              " ",
+              para_24,
+              " ",
+              para_25,
+              " ",
+              para_26,
+              " ",
+              para_27,
+              " ",
+              para_28,
+              " ",
+              para_29,
+              " ",
+              para_30,
+              " ",
+              para_31,
+              " ",
+              para_32,
+              " ",
+              para_33,
+              " ",
+              para_34,
+              " ",
+              para_35,
+              " ",
+              para_36,
+              " ",
+              para_37,
+              " ",
+              para_38,
+              " ",
+              para_39,
+              " ",
+              para_40,
+              " ",
+              para_41
+            ),
+          },
+          success: function main_process(response) {
+            document.getElementById("res").value = response;
+            // alert(response);
+          },
+          error: function error_process() {
+            // alert("Error Msg");
+          },
+        });
+      }
+      var intervalId = window.setInterval(function () {
+        req_data();
+        document.getElementById("imageid").src = "static/plot_feature.jpg";
+      }, 5000);
+      // window.onload = req_data();
+    </script>
+  </body>
+</html>
